@@ -69,6 +69,7 @@ public class ItemModel
         this.image = image;
     }
 
+    
     public String getServerName() {
         return ServerName;
     }
