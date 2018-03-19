@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.DeleteCatActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:background="@drawable/buton_login"
+        android:layout_marginTop="30dp"
+        android:text="تغير كلمه السر"
+        android:onClick="changePassword"
+        android:textColor="@android:color/white"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:background="@drawable/buton_login"
+        android:layout_marginTop="30dp"
+        android:text="تغير  الموقع و العنوان "
+        android:onClick="changeLocation"
+        android:textColor="@android:color/white"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

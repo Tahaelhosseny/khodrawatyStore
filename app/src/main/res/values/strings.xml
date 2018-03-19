@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">خضرواتى</string>
+
+    <string name="user_name">اسم المستخدم</string>
+    <string name="user_pass"> رمز المرور</string>
+    <string name="close">اغلاق</string>
+    <string name="open">فتح</string>
+    <string name="status_str">حاله المحل</string>
+    <string name="done_str">تأكيد</string>
+    <string name="status_image">status_image</string>
+    <string name="title_activity_change_loca_info">Map</string>
+</resources>

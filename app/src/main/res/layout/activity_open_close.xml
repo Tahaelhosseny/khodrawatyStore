@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.OpenClose">
+
+
+    <ImageView
+        android:layout_width="200dp"
+        android:background="@drawable/close"
+        android:contentDescription="@string/status_image"
+        android:scaleType="fitXY"
+        android:id="@+id/status_image"
+        android:layout_height="200dp" />
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/status"
+        android:textOff="@string/close"
+        android:textOn="@string/open"
+        android:layout_marginTop="30dp"
+        android:theme="@style/switchMy"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:text="@string/status_str" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buton_login"
+        android:text="@string/done_str"
+        android:onClick="saveStatus"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:padding="5dp"/>
+</LinearLayout>

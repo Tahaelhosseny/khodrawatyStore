@@ -1,0 +1,39 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.ChangeLocaInfo"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_height="match_parent" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@drawable/user_bass_back"
+            android:layout_margin="5dp"
+            android:hint="ادخل عنوانك هنا "
+            android:gravity="right"
+            android:lines="5"
+            android:maxLines="5"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:onClick="changeLocInfo"
+            android:textColor="@android:color/white"
+            android:background="@drawable/buton_login"
+            android:text="حفظ"/>
+
+    </LinearLayout>
+</LinearLayout>
