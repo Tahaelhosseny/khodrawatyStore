@@ -1,5 +1,6 @@
 package admin.store.com.httpkhodrawaty.khodrawatystore;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -119,7 +120,6 @@ public class ItemsActivity extends AppCompatActivity
                 //mProgressDialog.dismiss();
                 if (result.get("status").toString().contains("ok"))
                 {
-                    Log.e("ggggggggggggg",token +"\n"+result.get("res").toString()+id);
 
                     try {
                         JSONObject jsonObject = new JSONObject(result.get("res").toString());
@@ -141,15 +141,13 @@ public class ItemsActivity extends AppCompatActivity
                             {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                 Toast.makeText(getApplicationContext() , "jsonObject1 " + jsonObject1.toString() , Toast.LENGTH_SHORT).show();
-                               // ItemModel itemModel = new ItemModel(jsonObject1.getString("id"),jsonObject1.getString("name"),"http://khodrawaty.com/uploads/"+jsonObject1.getString("image")  , jsonObject1.getString("available"), jsonObject1.getString("details"), jsonObject1.getString("weight"),"30");
-                                ItemModel itemModel = new ItemModel(jsonObject1.getString("id"),jsonObject1.getString("name"),"http://khodrawaty.com/uploads/"+jsonObject1.getString("image"),jsonObject1.getString("available"),"30");
+                                ItemModel itemModel = new ItemModel( jsonObject1.getString("id"),  jsonObject1.getString("name"),jsonObject1.getString("image") , jsonObject1.getString("available"),jsonObject1.getString("price"),jsonObject1.getString("wieght"),jsonObject1.getString("details"));
                                 itemModels.add(itemModel);
                             }
                             itemAdapter.notifyDataSetChanged();
                         }
                     } catch (JSONException e)
                     {
-                        e.printStackTrace();
                     }
                 } else
                     Toast.makeText(getApplicationContext(), "something go wrong try again", Toast.LENGTH_SHORT).show();
@@ -163,5 +161,6 @@ public class ItemsActivity extends AppCompatActivity
 
     public void AddItemActivity(View view)
     {
+        startActivity(new Intent(getApplicationContext() , NewItem.class));
     }
 }

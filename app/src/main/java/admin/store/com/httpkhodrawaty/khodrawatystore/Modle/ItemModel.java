@@ -15,17 +15,27 @@ public class ItemModel
     String weight;
     String details ;
 
+    String cLink = "http://khodrawaty.com/uploads/";
 
-    public ItemModel(String id, String name, String image , String avilable , String price)
+    public String getcLink() {
+        return cLink;
+    }
+
+    public void setcLink(String cLink) {
+        this.cLink = cLink;
+    }
+
+    public ItemModel(String id, String name, String image , String avilable , String price , String weight ,String details)
     {
         this.id = id;
         this.name = name;
         this.image = image;
+        cLink = cLink.concat(image);
         this.ServerName = image;
         this.avilable = avilable;
-        this.Price = price;
-       // this.details = details ;
-        //this.weight = weight ;
+        this.Price = price + " ريال";
+        this.details = details ;
+        this.weight = weight ;
     }
 
 
@@ -69,7 +79,7 @@ public class ItemModel
         this.image = image;
     }
 
-    
+
     public String getServerName() {
         return ServerName;
     }

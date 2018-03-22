@@ -2,6 +2,7 @@ package admin.store.com.httpkhodrawaty.khodrawatystore.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +16,11 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
 import admin.store.com.httpkhodrawaty.khodrawatystore.EditCatInfo;
+import admin.store.com.httpkhodrawaty.khodrawatystore.EditItem;
 import admin.store.com.httpkhodrawaty.khodrawatystore.Modle.CategoryModel;
 import admin.store.com.httpkhodrawaty.khodrawatystore.Modle.ItemModel;
 import admin.store.com.httpkhodrawaty.khodrawatystore.R;
@@ -53,13 +56,25 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.MyViewHolder>
     public void onBindViewHolder(ItemAdapter.MyViewHolder holder,final int position)
     {
         holder.title.setText(itemmModels.get(position).getName());
-        Picasso.with(mContext).load(itemmModels.get(position).getImage()).placeholder(R.drawable.icons_14).into(holder.imageView);
+        holder.price.setText(itemmModels.get(position).getPrice());
+        Picasso.with(mContext).load(itemmModels.get(position).getcLink()).placeholder(R.drawable.icons_14).into(holder.imageView);
         holder.edit.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mContext.startActivity(new Intent(mContext.getApplicationContext() , EditCatInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra("id",itemmModels.get(position).getId()).putExtra("name",itemmModels.get(position).getName()).putExtra("image",itemmModels.get(position).getImage()).putExtra("availabilty",itemmModels.get(position).getAvilable()));
+                ItemModel itemModel = itemmModels.get(position);
+                Intent intent = new Intent(mContext.getApplicationContext() , EditItem.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("id", itemModel.getId());
+                intent.putExtra("name", itemModel.getName());
+                intent.putExtra("image", itemModel.getImage());
+                intent.putExtra("avilable", itemModel.getAvilable());
+                intent.putExtra("price", itemModel.getPrice());
+                intent.putExtra("cLink", itemModel.getcLink());
+                intent.putExtra("details", itemModel.getDetails());
+                intent.putExtra("serverName", itemModel.getServerName());
+                intent.putExtra("weight", itemModel.getWeight());
+                mContext.startActivity(intent);
             }
         });
 
@@ -95,12 +110,12 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.MyViewHolder>
         public MyViewHolder(View itemView)
         {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.cat_image);
-            title = (TextView) itemView.findViewById(R.id.title);
-            edit = (Button) itemView.findViewById(R.id.edit);
+            imageView = (ImageView) itemView.findViewById(R.id.item_image);
+            title = (TextView) itemView.findViewById(R.id.item_title);
+            edit = (Button) itemView.findViewById(R.id.item_edit);
             imageView22 = (ImageView) itemView.findViewById(R.id.imageView22);
-            items = (Button) itemView.findViewById(R.id.items);
-            price = (TextView) itemView.findViewById(R.id.price);
+            items = (Button) itemView.findViewById(R.id.item_edit);
+            price = (TextView) itemView.findViewById(R.id.item_price);
 
         }
     }

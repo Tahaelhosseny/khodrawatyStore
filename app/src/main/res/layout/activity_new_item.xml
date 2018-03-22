@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.NewItem">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:hint="ادخل اسم الصنف "
+                android:padding="5dp"
+                android:id="@+id/title"
+                android:gravity="right"
+                android:background="@drawable/user_bass_back"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content"
+                    android:text="ريال سعودى "/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:hint="ادخل سعر الصنف "
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/price"
+                    android:gravity="right"
+                    android:background="@drawable/user_bass_back"/>
+            </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:hint="ادخل بعد التفاصيل "
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/details"
+                android:gravity="right"
+                android:background="@drawable/user_bass_back"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/user_bass_back"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/cat"
+                    android:layout_height="30dp">
+                </android.support.v7.widget.AppCompatSpinner>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/user_bass_back"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/weight"
+                    android:layout_height="30dp">
+                </android.support.v7.widget.AppCompatSpinner>
+            </LinearLayout>
+
+
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:id="@+id/cat_rec"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_gravity="center"
+        android:onClick="addNew"
+        android:text="حفظ الصنف الجديد"
+        android:textColor="@android:color/white"
+        android:background="@drawable/buton_login"/>
+
+</LinearLayout>

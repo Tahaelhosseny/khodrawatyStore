@@ -55,9 +55,19 @@
         <activity
             android:name=".ChangeLocaInfo"
             android:label="@string/title_activity_change_loca_info" />
-        <activity android:name=".NewCat" />
-        <activity android:name=".EditCatInfo" />
-        <activity android:name=".ItemsActivity"></activity>
+        <activity
+            android:name=".NewCat"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".EditCatInfo"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ItemsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".NewItem"
+            android:parentActivityName=".ItemsActivity" />
+        <activity android:name=".EditItem" android:parentActivityName=".ItemsActivity"></activity>
     </application>
 
 </manifest>

@@ -1,16 +1,25 @@
 package admin.store.com.httpkhodrawaty.khodrawatystore.Modle;
 
+import java.io.Serializable;
+
 /**
  * Created by Taha on 3/17/2018.
  */
 
-public class CategoryModel
+public class CategoryModel implements Serializable
 {
     String id    ;
     String name  ;
     String image ;
     String ServerName;
     String avilable;
+
+
+    public CategoryModel(String id, String name)
+    {
+        this.id = id;
+        this.name = name;
+    }
 
     public String getServerName() {
         return ServerName;
@@ -63,5 +72,12 @@ public class CategoryModel
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+
+    @Override
+    public String toString() {
+
+        return name;
     }
 }
