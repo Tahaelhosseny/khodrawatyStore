@@ -1,5 +1,6 @@
 package admin.store.com.httpkhodrawaty.khodrawatystore.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -33,10 +34,10 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.MyViewHolder>
 {
 
 
-    private Context mContext;
+    private Activity mContext;
     private List<ItemModel> itemmModels;
 
-    public ItemAdapter(Context mContext, List<ItemModel> itemmModels)
+    public ItemAdapter(Activity mContext, List<ItemModel> itemmModels)
     {
         this.mContext = mContext;
         this.itemmModels = itemmModels;
@@ -48,7 +49,7 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.MyViewHolder>
     @Override
     public ItemAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_layout,parent,false);
+        View view = LayoutInflater.from(mContext.getApplicationContext()).inflate(R.layout.item_layout,parent,false);
         return new ItemAdapter.MyViewHolder(view);
     }
 
@@ -56,7 +57,7 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.MyViewHolder>
     public void onBindViewHolder(ItemAdapter.MyViewHolder holder,final int position)
     {
         holder.title.setText(itemmModels.get(position).getName());
-        holder.price.setText(itemmModels.get(position).getPrice());
+        holder.price.setText(itemmModels.get(position).getPrice() +" ريال ");
         Picasso.with(mContext).load(itemmModels.get(position).getcLink()).placeholder(R.drawable.icons_14).into(holder.imageView);
         holder.edit.setOnClickListener(new View.OnClickListener()
         {
@@ -74,10 +75,11 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.MyViewHolder>
                 intent.putExtra("details", itemModel.getDetails());
                 intent.putExtra("serverName", itemModel.getServerName());
                 intent.putExtra("weight", itemModel.getWeight());
-                mContext.startActivity(intent);
+                intent.putExtra("cat" ,itemModel.getCat());
+                mContext.getApplicationContext().startActivity(intent);
+                mContext.finish();
             }
         });
-
         if(itemmModels.get(position).getAvilable().equals("1"))
         {
             holder.imageView22.setBackgroundResource(R.mipmap.act);

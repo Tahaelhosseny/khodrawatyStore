@@ -1,6 +1,7 @@
 package admin.store.com.httpkhodrawaty.khodrawatystore.Adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -31,11 +32,11 @@ import admin.store.com.httpkhodrawaty.khodrawatystore.R;
 public class CatAdapter extends RecyclerView.Adapter <CatAdapter.MyViewHolder>
 {
 
-    private Context mContext;
+    private Activity mContext;
     private List<CategoryModel> categoryModels;
 
 
-    public CatAdapter(Context mContext, List<CategoryModel> categoryModels)
+    public CatAdapter(Activity mContext, List<CategoryModel> categoryModels)
     {
         this.mContext = mContext;
         this.categoryModels = categoryModels;
@@ -44,7 +45,7 @@ public class CatAdapter extends RecyclerView.Adapter <CatAdapter.MyViewHolder>
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.cat_item,parent,false);
+        View view = LayoutInflater.from(mContext.getApplicationContext()).inflate(R.layout.cat_item,parent,false);
         return new MyViewHolder(view);
     }
 
@@ -52,13 +53,13 @@ public class CatAdapter extends RecyclerView.Adapter <CatAdapter.MyViewHolder>
     public void onBindViewHolder(MyViewHolder holder, final int position)
     {
         holder.title.setText(categoryModels.get(position).getName());
-        Picasso.with(mContext).load(categoryModels.get(position).getImage()).placeholder(R.drawable.icons_14).into(holder.imageView);
+        Picasso.with(mContext.getApplicationContext()).load(categoryModels.get(position).getImage()).placeholder(R.drawable.icons_14).into(holder.imageView);
         holder.edit.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mContext.startActivity(new Intent(mContext.getApplicationContext() , EditCatInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra("id",categoryModels.get(position).getId()).putExtra("name",categoryModels.get(position).getName()).putExtra("image",categoryModels.get(position).getImage()).putExtra("availabilty",categoryModels.get(position).isAvilable()));
+                mContext.getApplicationContext().startActivity(new Intent(mContext.getApplicationContext() , EditCatInfo.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra("id",categoryModels.get(position).getId()).putExtra("name",categoryModels.get(position).getName()).putExtra("image",categoryModels.get(position).getImage()).putExtra("availabilty",categoryModels.get(position).isAvilable()));
             }
         });
 
@@ -77,7 +78,9 @@ public class CatAdapter extends RecyclerView.Adapter <CatAdapter.MyViewHolder>
             public void onClick(View v)
             {
 
-                mContext.startActivity(new Intent(mContext.getApplicationContext(),ItemsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra("name",categoryModels.get(position).getName()).putExtra("cat_id",categoryModels.get(position).getId()));
+                Intent intent =new Intent(mContext.getApplicationContext(),ItemsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra("name",categoryModels.get(position).getName()).putExtra("cat_id",categoryModels.get(position).getId());
+                mContext.getApplicationContext().startActivity(intent);
+              // mContext.finish();
             }
         });
 

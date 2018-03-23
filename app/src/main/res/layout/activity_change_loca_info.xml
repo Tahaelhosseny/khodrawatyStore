@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:id="@+id/des"
             android:background="@drawable/user_bass_back"
             android:layout_margin="5dp"
             android:hint="ادخل عنوانك هنا "

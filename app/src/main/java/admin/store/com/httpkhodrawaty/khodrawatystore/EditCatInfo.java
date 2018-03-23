@@ -135,7 +135,6 @@ public class EditCatInfo extends AppCompatActivity
             notActive.setChecked(true);
         }
 
-
         imageList = new ArrayList<>();
         imageAdapter = new ImageAdapter(getApplicationContext() , imageList);
         recyclerView = (RecyclerView) findViewById(R.id.rec_image);
@@ -174,9 +173,6 @@ public class EditCatInfo extends AppCompatActivity
         Map<String, String> params = new HashMap<String, String>();
         params.put("id", id);
         params.put("token", token);
-
-
-
 
         MakeRequest makeRequest = new MakeRequest("/Requests/get_images", "1", params, this);
 

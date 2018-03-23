@@ -39,8 +39,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="3"
                     android:hint="ادخل سعر الصنف "
+                    android:inputType="numberDecimal"
                     android:padding="5dp"
                     android:layout_marginTop="10dp"
                     android:id="@+id/price"
@@ -85,6 +85,27 @@
                 </android.support.v7.widget.AppCompatSpinner>
             </LinearLayout>
 
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/avilabilty"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="غير متاح  "
+                    android:checked="true"
+                    android:id="@+id/not_active"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:text="متاح "
+                    android:id="@+id/active"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
+
 
 
 
@@ -107,8 +128,8 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:layout_gravity="center"
-        android:onClick="saveEdit"
-        android:text="حفظ التعديلات"
+        android:onClick="saveUpdates"
+        android:text="حفظ التعديلات الجديده"
         android:textColor="@android:color/white"
         android:background="@drawable/buton_login"/>
 

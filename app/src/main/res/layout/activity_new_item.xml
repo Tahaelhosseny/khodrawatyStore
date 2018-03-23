@@ -39,8 +39,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="3"
                     android:hint="ادخل سعر الصنف "
+                    android:inputType="numberDecimal"
                     android:padding="5dp"
                     android:layout_marginTop="10dp"
                     android:id="@+id/price"

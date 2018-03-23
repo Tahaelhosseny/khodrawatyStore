@@ -61,7 +61,6 @@ public class ItemsActivity extends AppCompatActivity
     protected void onResume()
     {
         super.onResume();
-
         init();
 
     }
@@ -71,8 +70,6 @@ public class ItemsActivity extends AppCompatActivity
         SharedPreferences prefs = getSharedPreferences("admin.store.com.httpkhodrawaty.khodrawatystore", MODE_PRIVATE);
         id = prefs.getString("id",null);
         token = prefs.getString("token",null);
-
-
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.set_title);
         View v = getSupportActionBar().getCustomView();
@@ -88,10 +85,8 @@ public class ItemsActivity extends AppCompatActivity
                 finish();
             }
         });
-
-
         itemModels = new ArrayList<>();
-        itemAdapter = new ItemAdapter(getApplicationContext() , itemModels);
+        itemAdapter = new ItemAdapter(this, itemModels);
         recyclerView = (RecyclerView) findViewById(R.id.cat_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(itemAdapter);
@@ -99,20 +94,13 @@ public class ItemsActivity extends AppCompatActivity
         request();
     }
 
-
-
-
-
     private void request()
     {
         Map<String, String> params = new HashMap<String, String>();
         params.put("id", id);
         params.put("token", token);
         params.put("category_id",cat_Id);
-
-
         MakeRequest makeRequest = new MakeRequest("/Requests/get_product", "1", params, this);
-
         makeRequest.request(new VolleyCallback() {
             @Override
             public void onSuccess(Map<String, String> result)
@@ -140,13 +128,13 @@ public class ItemsActivity extends AppCompatActivity
                             for (int i = 0 ; i<jsonArray.length() ; i++)
                             {
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                Toast.makeText(getApplicationContext() , "jsonObject1 " + jsonObject1.toString() , Toast.LENGTH_SHORT).show();
-                                ItemModel itemModel = new ItemModel( jsonObject1.getString("id"),  jsonObject1.getString("name"),jsonObject1.getString("image") , jsonObject1.getString("available"),jsonObject1.getString("price"),jsonObject1.getString("wieght"),jsonObject1.getString("details"));
+                                ItemModel itemModel = new ItemModel( jsonObject1.getString("id"),  jsonObject1.getString("name"),jsonObject1.getString("image") , jsonObject1.getString("available"),jsonObject1.getString("price"),jsonObject1.getString("weight"),jsonObject1.getString("details"),cat_Id);
                                 itemModels.add(itemModel);
                             }
                             itemAdapter.notifyDataSetChanged();
                         }
-                    } catch (JSONException e)
+                    }
+                    catch (JSONException e)
                     {
                     }
                 } else

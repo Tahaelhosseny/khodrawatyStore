@@ -15,6 +15,8 @@ public class ItemModel
     String weight;
     String details ;
 
+    String cat ;
+
     String cLink = "http://khodrawaty.com/uploads/";
 
     public String getcLink() {
@@ -25,7 +27,7 @@ public class ItemModel
         this.cLink = cLink;
     }
 
-    public ItemModel(String id, String name, String image , String avilable , String price , String weight ,String details)
+    public ItemModel(String id, String name, String image , String avilable , String price , String weight ,String details , String cat)
     {
         this.id = id;
         this.name = name;
@@ -33,11 +35,20 @@ public class ItemModel
         cLink = cLink.concat(image);
         this.ServerName = image;
         this.avilable = avilable;
-        this.Price = price + " ريال";
+        this.Price = price ;
         this.details = details ;
         this.weight = weight ;
+        this.cat = cat;
     }
 
+
+    public String getCat() {
+        return cat;
+    }
+
+    public void setCat(String cat) {
+        this.cat = cat;
+    }
 
     public String getWeight() {
         return weight;

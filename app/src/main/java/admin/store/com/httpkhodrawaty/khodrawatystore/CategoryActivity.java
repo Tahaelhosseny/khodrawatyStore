@@ -87,7 +87,7 @@ public class CategoryActivity extends AppCompatActivity
             }
         });
         categoryModels = new ArrayList<>();
-        catAdapter = new CatAdapter(getApplicationContext() , categoryModels);
+        catAdapter = new CatAdapter( this, categoryModels);
         recyclerView = (RecyclerView) findViewById(R.id.cat_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(catAdapter);
