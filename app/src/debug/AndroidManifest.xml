@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
-        <activity android:name="admin.store.com.httpkhodrawaty.khodrawatystore.CategoryActivity"></activity>
+        <activity android:name="admin.store.com.httpkhodrawaty.khodrawatystore.CategoryActivity" />
+        <activity android:name="admin.store.com.httpkhodrawaty.khodrawatystore.ChangeWorkTime" />
+        <activity android:name="admin.store.com.httpkhodrawaty.khodrawatystore.SalesMan"></activity>
     </application>
+
 </manifest>

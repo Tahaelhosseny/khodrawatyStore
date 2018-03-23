@@ -100,4 +100,10 @@ public class MainActivity extends AppCompatActivity
         startActivity(new Intent(getApplicationContext() , CategoryActivity.class));
 
     }
+
+    public void salesMan(View view)
+    {
+        startActivity(new Intent(getApplicationContext() , SalesMan.class));
+
+    }
 }

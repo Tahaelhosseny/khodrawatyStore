@@ -1,6 +1,7 @@
 package admin.store.com.httpkhodrawaty.khodrawatystore;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,13 +47,12 @@ public class ChangeLocaInfo extends FragmentActivity implements OnMapReadyCallba
     String dis;
     GoogleApiClient mGoogleApiClient ;
     LocationRequest locationRequest ;
-
     MarkerOptions markerOptions ;
-    Location lastLocation ;
-
-
+    Location lastLocation =null;
     EditText editText;
     String des;
+
+    ProgressDialog mProgressDialog ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,21 +61,19 @@ public class ChangeLocaInfo extends FragmentActivity implements OnMapReadyCallba
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        init();
+        mProgressDialog = new ProgressDialog(this);
     }
-
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LatLng sydney = new LatLng(-34, 151);
-        markerOptions = new MarkerOptions().position(sydney).title("Marker in Sydney").draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.shop));
+        markerOptions = new MarkerOptions().position(sydney).title("المتجر").draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.shop));
         mMap.addMarker(markerOptions);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         //mMap.setMyLocationEnabled(true);
+        init();
         setUpLocIndo();
         buildGooGleApiClient();
     }
@@ -98,11 +97,15 @@ public class ChangeLocaInfo extends FragmentActivity implements OnMapReadyCallba
     private void  setUpLocIndo()
     {
 
+        mProgressDialog.setTitle("استرجاع المعلومات");
+        mProgressDialog.setCancelable(false);
+
+
         Map<String, String> params = new HashMap<String, String>();
         params.put("id", id);
         params.put("token", token);
 
-        MakeRequest makeRequest = new MakeRequest("/Requests/store_location", "1", params, this);
+        final MakeRequest makeRequest = new MakeRequest("/Requests/store_location", "1", params, this);
 
         makeRequest.request(new VolleyCallback() {
             @Override
@@ -117,12 +120,15 @@ public class ChangeLocaInfo extends FragmentActivity implements OnMapReadyCallba
                         if(status.equals("ok"))
                         {
                             String data = jsonObject.getString("data");
-                            JSONObject jsonObject1 = new JSONObject(data);
+                            JSONArray jsonArray = new JSONArray(data);
+                            JSONObject jsonObject1 =jsonArray.getJSONObject(0);
+                            lastLocation = new Location("nnn");
                             lastLocation.setLatitude(Double.valueOf(jsonObject1.getString("lat")));
                             lastLocation.setLongitude(Double.valueOf(jsonObject1.getString("lng")));
                             des = jsonObject1.getString("address");
                             mMap.clear();
                             editText.setText(des);
+                            markerOptions.position(new LatLng(lastLocation.getLatitude(),lastLocation.getLongitude()));
                             mMap.addMarker(markerOptions);
                             mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lastLocation.getLatitude(),lastLocation.getLongitude())) );
                             mMap.moveCamera(CameraUpdateFactory.zoomTo(14));
@@ -146,6 +152,8 @@ public class ChangeLocaInfo extends FragmentActivity implements OnMapReadyCallba
 
             }
         });
+        mProgressDialog.dismiss();
+
     }
 
 
@@ -197,8 +205,11 @@ public class ChangeLocaInfo extends FragmentActivity implements OnMapReadyCallba
 
     public void changeLocInfo(View view)
     {
+        mProgressDialog.setTitle("حفظ المعلومات الجديده");
         des = editText.getText().toString();
         request();
+        mProgressDialog.dismiss();
+
     }
 
     @Override

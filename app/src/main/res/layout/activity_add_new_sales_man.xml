@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.AddNewSalesMan">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:id="@+id/name"
+                android:hint="اسم المندوب"
+                android:background="@drawable/user_bass_back"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:id="@+id/email"
+                android:hint="البريد الالكترونى"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/user_bass_back"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/phone"
+                android:hint="رقم الهاتف"
+                android:background="@drawable/user_bass_back"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/password"
+                android:hint="الرقم السرى"
+                android:background="@drawable/user_bass_back"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/cpassword"
+                android:hint="تأكيد الرقم السرى"
+                android:background="@drawable/user_bass_back"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:background="@drawable/user_bass_back"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:id="@+id/city"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="addNew"
+        android:background="@drawable/buton_login"
+        android:textColor="@android:color/white"
+        android:text="اضافه المندوب "/>
+
+</LinearLayout>

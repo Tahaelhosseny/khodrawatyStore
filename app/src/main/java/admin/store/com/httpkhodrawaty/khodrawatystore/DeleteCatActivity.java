@@ -84,4 +84,9 @@ public class DeleteCatActivity extends AppCompatActivity
         startActivity(new Intent(getApplicationContext() , ChangeLocaInfo.class));
 
     }
+
+    public void changeTime(View view)
+    {
+        startActivity(new Intent(getApplicationContext() , ChangeWorkTime.class));
+    }
 }

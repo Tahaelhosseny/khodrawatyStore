@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:orientation="vertical"
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.ChangeWorkTime">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="5dp"
+        android:id="@+id/add"
+        android:background="@drawable/user_bass_back"
+        android:hint="ادخل مواعيد العمل"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buton_login"
+        android:padding="10dp"
+        android:onClick="changeTime"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/white"
+        android:text="تعديل مواعيد العمل الجديده"/>
+
+
+</LinearLayout>

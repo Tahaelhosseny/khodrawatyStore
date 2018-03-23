@@ -29,4 +29,15 @@
         android:layout_marginLeft="20dp"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:background="@drawable/buton_login"
+        android:layout_marginTop="30dp"
+        android:text="تغير مواعيد العمل  "
+        android:onClick="changeTime"
+        android:textColor="@android:color/white"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
