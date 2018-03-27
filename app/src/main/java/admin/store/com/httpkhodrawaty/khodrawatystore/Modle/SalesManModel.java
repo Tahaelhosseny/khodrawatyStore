@@ -17,7 +17,7 @@ public class SalesManModel
     CityModel cityModel ;
 
 
-    public SalesManModel(String name, String city, String city_id, String email, String password, String phone, String id)
+    public SalesManModel( String city_id ,String name, String city, String email, String password, String phone, String id)
     {
         this.name = name;
         this.city = city;

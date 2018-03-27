@@ -7,21 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import admin.store.com.httpkhodrawaty.khodrawatystore.EditCatInfo;
+import admin.store.com.httpkhodrawaty.khodrawatystore.EditSalesMan;
 import admin.store.com.httpkhodrawaty.khodrawatystore.ItemsActivity;
 import admin.store.com.httpkhodrawaty.khodrawatystore.Modle.CategoryModel;
 import admin.store.com.httpkhodrawaty.khodrawatystore.Modle.SalesManModel;
 import admin.store.com.httpkhodrawaty.khodrawatystore.R;
+import admin.store.com.httpkhodrawaty.khodrawatystore.SalesMan;
 
 /**
  * Created by Taha on 3/23/2018.
@@ -38,6 +36,7 @@ public class SalesManAdapter  extends RecyclerView.Adapter<SalesManAdapter.MyVie
     {
         this.mContext = mContext;
         this.salesManModels = salesManModels;
+
     }
 
     @Override
@@ -56,14 +55,15 @@ public class SalesManAdapter  extends RecyclerView.Adapter<SalesManAdapter.MyVie
             @Override
             public void onClick(View v)
             {
-                /*Intent intent = new Intent(mContext , EditSalesMan.class);
+                Intent intent = new Intent(mContext , EditSalesMan.class);
                 intent.putExtra("name",salesManModels.get(position).getName());
                 intent.putExtra("city",salesManModels.get(position).getCity());
                 intent.putExtra("city_id",salesManModels.get(position).getCity_id());
                 intent.putExtra("email",salesManModels.get(position).getEmail());
                 intent.putExtra("password",salesManModels.get(position).getPassword());
                 intent.putExtra("phone",salesManModels.get(position).getPhone());
-                intent.putExtra("id",salesManModels.get(position).getId());*/
+                intent.putExtra("id",salesManModels.get(position).getId());
+                mContext.startActivity(intent);
 
             }
         });

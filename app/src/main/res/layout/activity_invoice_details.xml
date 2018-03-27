@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.InvoiceDetails">
+    <TextView
+        android:id="@+id/invoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center"
+        android:text="450#"
+        android:layout_gravity="right"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/invoice"
+        android:lines="1"
+        android:maxLines="1"
+        android:gravity="right"
+        android:padding="5dp"
+        android:text="الاسم" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lines="1"
+        android:gravity="right"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:text="رقم الهاتف" />
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="5dp"
+        android:text="2-1-2018	"
+        android:textSize="20sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="السعر"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="2dp"
+            android:background="@android:color/black"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="الكميه"
+            android:textSize="20sp"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="2dp"
+            android:background="@android:color/black"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="السلعه"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/rec"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/price"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@drawable/buton_login"
+        android:text="السعر"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:id="@+id/cancel"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:background="@drawable/buton_login"
+            android:text="الغاء"
+            android:onClick="cancell"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:id="@+id/change"
+            android:layout_weight="1"
+            android:onClick="changeStatus"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:background="@drawable/buton_login"
+            android:text="krgggg"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

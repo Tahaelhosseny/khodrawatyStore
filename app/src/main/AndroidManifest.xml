@@ -14,10 +14,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
             android:name=".Splash"
@@ -74,7 +74,15 @@
         <activity
             android:name=".EditItem"
             android:parentActivityName=".ItemsActivity" />
-        <activity android:name=".AddNewSalesMan"></activity>
+        <activity android:name=".AddNewSalesMan" />
+        <activity android:name=".EditSalesMan" />
+        <activity android:name=".NewOrders" />
+        <activity android:name=".WaitingList" />
+        <activity android:name=".PrepareList" />
+        <activity android:name=".OnWay" />
+        <activity android:name=".Finished" />
+        <activity android:name=".Canceled" />
+        <activity android:name=".InvoiceDetails"></activity>
     </application>
 
 </manifest>

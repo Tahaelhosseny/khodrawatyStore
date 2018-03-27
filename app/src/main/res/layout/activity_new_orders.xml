@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.NewOrders">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="فى الانتظار"
+        android:onClick="waiting"
+        android:textColor="@android:color/white"
+        android:background="@drawable/buton_login"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="تحت التجهيز"
+        android:onClick="prepare"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buton_login"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="onWay"
+        android:text="قيد التوصيل "
+        android:textColor="@android:color/white"
+        android:background="@drawable/buton_login"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="انتهت"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="finished"
+        android:textColor="@android:color/white"
+        android:background="@drawable/buton_login"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="الغيت"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:onClick="canceled"
+        android:background="@drawable/buton_login"/>
+
+</LinearLayout>

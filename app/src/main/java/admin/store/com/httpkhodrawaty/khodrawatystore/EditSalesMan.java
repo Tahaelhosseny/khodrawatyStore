@@ -1,12 +1,11 @@
 package admin.store.com.httpkhodrawaty.khodrawatystore;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,15 +23,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import admin.store.com.httpkhodrawaty.khodrawatystore.Adapter.CatAdapter;
-import admin.store.com.httpkhodrawaty.khodrawatystore.Modle.CategoryModel;
 import admin.store.com.httpkhodrawaty.khodrawatystore.Modle.CityModel;
+import admin.store.com.httpkhodrawaty.khodrawatystore.Modle.SalesManModel;
 import admin.store.com.httpkhodrawaty.khodrawatystore.netHelper.MakeRequest;
 import admin.store.com.httpkhodrawaty.khodrawatystore.netHelper.VolleyCallback;
 
-public class AddNewSalesMan extends AppCompatActivity
+public class EditSalesMan extends AppCompatActivity
 {
-
     String id;
     String token ;
     List<CityModel> cityModels ;
@@ -60,11 +57,14 @@ public class AddNewSalesMan extends AppCompatActivity
     String str_password ;
     String str_cPassword ;
 
+
+    SalesManModel salesManModel = new SalesManModel() ;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_sales_man);
+        setContentView(R.layout.activity_edit_sales_man);
     }
 
 
@@ -74,10 +74,36 @@ public class AddNewSalesMan extends AppCompatActivity
         super.onResume();
 
         init();
-
+        setData();
         setCity();
 
     }
+
+
+    private void setData()
+    {
+        Intent intent = getIntent();
+        salesManModel.setName(intent.getStringExtra("name"));
+        salesManModel.setCity(intent.getStringExtra("city"));
+        salesManModel.setCity_id(intent.getStringExtra("city_id"));
+        salesManModel.setEmail(intent.getStringExtra("email"));
+        salesManModel.setPassword(intent.getStringExtra("password"));
+        salesManModel.setPhone(intent.getStringExtra("phone"));
+        salesManModel.setId(intent.getStringExtra("id"));
+
+
+        namee.setText(salesManModel.getName());
+        email.setText(salesManModel.getEmail());
+        phone.setText(salesManModel.getPhone());
+        password.setText(salesManModel.getPassword());
+        cPassword.setText(salesManModel.getPassword());
+
+
+
+
+
+    }
+
 
     private void init()
     {
@@ -91,7 +117,7 @@ public class AddNewSalesMan extends AppCompatActivity
         textView = (TextView) v.findViewById(R.id.mytext);
         imageButton = (ImageButton) v.findViewById(R.id.imageButton);
         imageButton.setVisibility(View.VISIBLE);
-        textView.setText("مندوب جديد ");
+        textView.setText("تعديل بيانات المندوب ");
         imageButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -109,6 +135,9 @@ public class AddNewSalesMan extends AppCompatActivity
 
 
     }
+
+
+
     private void setCity()
     {
         cites = (AppCompatSpinner) findViewById(R.id.city);
@@ -145,13 +174,22 @@ public class AddNewSalesMan extends AppCompatActivity
                 {
                     try {
                         JSONArray jsonArray = new JSONArray(result.get("res").toString());
-                            for (int i = 0 ; i<jsonArray.length() ; i++)
+                        for (int i = 0 ; i<jsonArray.length() ; i++)
+                        {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            CityModel cityModel = new CityModel(jsonObject1.getString("id"),jsonObject1.getString("name"));
+                            cityModels.add(cityModel);
+                        }
+                        for (int i = 0 ; i < cityModels.size() ; i++ )
+                        {
+                            if(cityModels.get(i).getId().equals(salesManModel.getCity_id()))
                             {
-                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                CityModel cityModel = new CityModel(jsonObject1.getString("id"),jsonObject1.getString("name"));
-                                cityModels.add(cityModel);
+                                cites.setSelection(i);
+                                citesArrayAdapter.notifyDataSetChanged();
+                                break;
                             }
-                            citesArrayAdapter.notifyDataSetChanged();
+                        }
+                        citesArrayAdapter.notifyDataSetChanged();
 
                     } catch (JSONException e)
                     {
@@ -165,9 +203,16 @@ public class AddNewSalesMan extends AppCompatActivity
             }
         });
 
+
+
+
     }
 
-    public void addNew(View view)
+
+
+
+
+    public void edit(View view)
     {
         String str_cityId =cityModels.get(cites.getSelectedItemPosition()).getId();
 
@@ -220,7 +265,7 @@ public class AddNewSalesMan extends AppCompatActivity
         }
         if(x==0)
         {
-           add(str_namee , str_email , str_phone , str_password , str_cPassword);
+            add(str_namee , str_email , str_phone , str_password , str_cPassword);
         }
     }
 
@@ -236,8 +281,9 @@ public class AddNewSalesMan extends AppCompatActivity
         params.put("password", str_phone);
         params.put("phone", str_password);
         params.put("city_id", city_id);
+        params.put("user_id" , salesManModel.getId());
 
-        MakeRequest makeRequest = new MakeRequest("/Requests/add_salesman", "1", params, this);
+        MakeRequest makeRequest = new MakeRequest("/Requests/edit_salesman", "1", params, this);
 
         makeRequest.request(new VolleyCallback() {
             @Override
@@ -251,20 +297,17 @@ public class AddNewSalesMan extends AppCompatActivity
                         String status = jsonObject.get("status").toString();
                         if(status.equals("error"))
                         {
-                            namee.setText(status);
+                            Toast.makeText(getApplicationContext() , " لقد وقعت مشكله الرجاء اعاده المحاوله" , Toast.LENGTH_SHORT).show();
                         }
-                        else if(status.equals("email"))
-                        {
-                            Toast.makeText(getApplicationContext() , " لقد سبق استخدام نفس البريد الرجاء اعاده المحاوله ببريد جديد" , Toast.LENGTH_SHORT).show();
-                            email.setError("مستخدم مسبقا");
-                        }
+
                         else if(status.equals("unauthorized"))
                         {
                             Toast.makeText(getApplicationContext() , "الرجاء تسجيل الخروج ومن ثم اعاده تسجيل الدخول ومحاوله التغير مره اخرى " , Toast.LENGTH_LONG).show();
                         }
                         else if(status.equals("ok"))
                         {
-                            Toast.makeText(getApplicationContext() , "تم تعديل الصنف بنجاح " , Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext() , "تم تعديل بينات المندوب بنجاح " , Toast.LENGTH_LONG).show();
+
 
                         }
                     } catch (JSONException e)

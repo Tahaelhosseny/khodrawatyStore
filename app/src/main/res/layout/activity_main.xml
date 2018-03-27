@@ -26,6 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="newOrders"
                     android:background="@drawable/icons_06"
                     android:scaleType="fitXY" />
 
@@ -36,7 +37,7 @@
                     android:textSize="20sp"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:text="الطلبات الجديده" />
+                    android:text="متابعه الطلبات" />
 
             </LinearLayout>
         <LinearLayout

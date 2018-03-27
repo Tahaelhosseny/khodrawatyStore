@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.AddNewSalesMan">
+    tools:context="admin.store.com.httpkhodrawaty.khodrawatystore.EditSalesMan">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -80,9 +81,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:onClick="addNew"
+        android:onClick="edit"
         android:background="@drawable/buton_login"
         android:textColor="@android:color/white"
-        android:text="اضافه مندوب جديد "/>
-
+        android:text="تعديل المندوب "/>
 </LinearLayout>

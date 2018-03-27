@@ -37,14 +37,16 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.MyViewHolder>
     private Activity mContext;
     private List<ItemModel> itemmModels;
 
+
+
+
+
     public ItemAdapter(Activity mContext, List<ItemModel> itemmModels)
     {
         this.mContext = mContext;
         this.itemmModels = itemmModels;
-        Toast.makeText(mContext.getApplicationContext() , itemmModels.size() + "" , Toast.LENGTH_SHORT).show();
 
     }
-
 
     @Override
     public ItemAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)

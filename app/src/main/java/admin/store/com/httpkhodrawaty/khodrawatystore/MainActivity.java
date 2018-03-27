@@ -106,4 +106,9 @@ public class MainActivity extends AppCompatActivity
         startActivity(new Intent(getApplicationContext() , SalesMan.class));
 
     }
+
+    public void newOrders(View view)
+    {
+        startActivity(new Intent(this , NewOrders.class));
+    }
 }
